@@ -4,18 +4,20 @@ const form = document.getElementById("form_container");
 
 const table_container = document.getElementById("table_container");
 
-function Book() {
-    this.title,
-    this.author,
-    this.pages,
-    this.read
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author
+        this.pages = pages
+        this.title = read
+    }
 }
 
 function addBookToLibrary() {
     // Object to array handler
     const book = new Book();
 
-   
+
 
     const title = document.getElementById("title");
     const author = document.getElementById("author");
@@ -24,7 +26,7 @@ function addBookToLibrary() {
 
     if (title.value == " " || author.value == "" || pages.value == "") {
         alert("Ensure you input a value in both fields!");
-      } else {
+    } else {
         // perform operation with form input
         book.title = title.value;
         book.author = author.value;
@@ -40,7 +42,7 @@ function addBookToLibrary() {
 
     info_container.classList.add("information-element-container");
     table_container.append(info_container);
-    
+
     for (let i = 0; i < 3; i++) {
         const field_text = document.createElement("div");
         field_text.classList.add("field-text");
@@ -50,14 +52,14 @@ function addBookToLibrary() {
         if (i == 2) {
             const field_text = document.createElement("div");
             field_text.classList.add("field-text");
-        
+
             info_container.append(field_text);
 
             const read_button = document.createElement("button");
             read_button.classList.add("read-button");
             if (book.read == "Read") { read_button.classList.add("green-button"); } else { read_button.classList.remove("green-button"); }
             read_button.textContent = book.read;
-            
+
 
             const buttons_container = document.createElement("div");
             buttons_container.classList.add("buttons-container");
@@ -102,7 +104,7 @@ function addBookToLibrary() {
         }
     }
 }
-    
+
 
 
 form.addEventListener("submit", (event) => {
